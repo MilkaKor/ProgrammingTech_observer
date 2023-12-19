@@ -26,23 +26,14 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         timeServer = new TimeServer();
-
         imageComponentPane = new ImagePane();
         clockComponent = new ClockComponent();
-        try {
-            mediaPlayerComponent = new PlayerComponent();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
 
         timeServer.attach(imageComponentPane);
         timeServer.attach(clockComponent);
-        timeServer.attach(mediaPlayerComponent);
 
         this.TimerText.setCenter(clockComponent.getClock());
         this.ImagePane.getChildren().add(imageComponentPane.buildMeme());
-        this.MediaPage.setCenter(mediaPlayerComponent.getMediaView());
 
-        System.out.println(mediaPlayerComponent.getMediaView().getMediaPlayer().getMedia().getDuration());
     }
 }
